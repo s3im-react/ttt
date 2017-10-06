@@ -32,7 +32,7 @@ class App extends Component {
         for (let i = 0; i < 3; i++) {
             if (
                 (
-                    grid[i][0] === grid[i][1] && grid[i][1] === grid[i][1] &&
+                    grid[i][0] === grid[i][1] && grid[i][1] === grid[i][2] &&
                     grid[i][0] !== null && grid[i][1] !== null && grid[i][2] !== null
                 ) ||
                 (
@@ -75,21 +75,13 @@ class App extends Component {
                 }
                 <table>
                     <tbody>
-                        <tr>
-                            <td onClick={() => this.onCellClick(0, 0)}>{this.state.grid[0][0]}</td>
-                            <td onClick={() => this.onCellClick(0, 1)}>{this.state.grid[0][1]}</td>
-                            <td onClick={() => this.onCellClick(0, 2)}>{this.state.grid[0][2]}</td>
-                        </tr>
-                        <tr>
-                            <td onClick={() => this.onCellClick(1, 0)}>{this.state.grid[1][0]}</td>
-                            <td onClick={() => this.onCellClick(1, 1)}>{this.state.grid[1][1]}</td>
-                            <td onClick={() => this.onCellClick(1, 2)}>{this.state.grid[1][2]}</td>
-                        </tr>
-                        <tr>
-                            <td onClick={() => this.onCellClick(2, 0)}>{this.state.grid[2][0]}</td>
-                            <td onClick={() => this.onCellClick(2, 1)}>{this.state.grid[2][1]}</td>
-                            <td onClick={() => this.onCellClick(2, 2)}>{this.state.grid[2][2]}</td>
-                        </tr>
+                        {this.state.grid.map((row, i) => (
+                            <tr>
+                                {row.map((cell, j) => (
+                                    <td onClick={() => this.onCellClick(i, j)}>{cell}</td>
+                                ))}
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

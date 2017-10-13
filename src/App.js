@@ -4,14 +4,16 @@ import './App.css';
 
 class App extends Component {
     state = {
-        grid: [
+        grid:          [
             [null, null, null],
             [null, null, null],
             [null, null, null],
         ],
         currentPlayer: 'X',
-        winner: null,
+        winner:        null,
     };
+
+
 
     onCellClick(row, column) {
         if (null !== this.state.grid[row][column] || null !== this.state.winner) {
